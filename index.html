@@ -13,40 +13,56 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
         }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: #84d634; /* Цвет киви */
-        }
-        p {
-            color: #888;
-            margin-bottom: 2rem;
-        }
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; color: #84d634; }
+        
+        .container { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+        
         .btn {
-            padding: 15px 40px;
+            padding: 15px 30px;
             background-color: #84d634;
             color: #000;
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
             transition: transform 0.2s, background 0.3s;
+            text-align: center;
         }
-        .btn:hover {
-            background-color: #a3e660;
-            transform: scale(1.05);
+        .btn:hover { background-color: #a3e660; transform: scale(1.05); }
+
+        .changelog {
+            margin-top: 40px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #333;
         }
+        .changelog h2 { margin-top: 0; color: #84d634; font-size: 1.2rem; }
+        .changelog ul { padding-left: 20px; color: #ccc; }
     </style>
 </head>
 <body>
 
     <h1>Kywy</h1>
-    <p>Kywy AutoClicker ver alpha 0.0.1</p>
+    <p>AutoClicker Download Center</p>
     
-    <!-- Сюда вставь ссылку на релиз с GitHub -->
-    <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn">Download Kywy AutoClicker</a>
+    <div class="container">
+        <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn">Download v0.0.1</a>
+        <a href="#" class="btn">Download v0.0.2</a>
+    </div>
+
+    <div class="changelog">
+        <h2>Changelog</h2>
+        <ul>
+            <li><strong>v0.0.2:</strong> Исправлены баги, добавлен новый режим кликов.</li>
+            <li><strong>v0.0.1:</strong> Релиз первой альфа-версии.</li>
+        </ul>
+    </div>
 
 </body>
 </html>
