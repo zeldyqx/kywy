@@ -30,6 +30,7 @@
             border-radius: 50px;
             transition: transform 0.2s, background 0.3s;
             text-align: center;
+            display: inline-block;
         }
         .btn:hover { background-color: #a3e660; transform: scale(1.05); }
 
@@ -45,6 +46,12 @@
         .changelog h2 { margin-top: 0; color: #84d634; font-size: 1.2rem; }
         .changelog ul { padding-left: 20px; color: #ccc; }
         .changelog li { margin-bottom: 8px; }
+
+        .feedback-section {
+            margin-top: 40px;
+            text-align: center;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +74,13 @@
             <li><strong>alpha 0.0.2:</strong> Added: Ability to Change CPS, Dark Mode, Optimized File Size</li>
             <li><strong>alpha 0.0.1:</strong> First Version of Kywy AutoClicker</li>
         </ul>
+    </div>
+
+    <div class="feedback-section">
+        <h2 style="color: #84d634; font-size: 1.2rem; margin-bottom: 10px;">Обратная связь</h2>
+        <a href="mailto:kywyfeedbacks@gmail.com?subject=Отзыв о Kywy AutoClicker&body=Тип сообщения (Публичное / Приватное):%0A%0AВаш комментарий:%0A" class="btn" style="background-color: #333; color: #fff;">
+            Написать отзыв
+        </a>
     </div>
 
 </body>
