@@ -12,14 +12,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            padding: 40px 20px;
             margin: 0;
-            padding: 20px;
+            min-height: 100vh;
         }
         h1 { font-size: 3rem; margin-bottom: 0.5rem; color: #84d634; }
         
-        .container { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+        .container { display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
         
         .btn {
             padding: 15px 30px;
@@ -33,7 +32,16 @@
             display: inline-block;
         }
         .btn:hover { background-color: #a3e660; transform: scale(1.05); }
-        .btn-new { background-color: #ffcc00; } /* Цвет для новинки */
+        
+        .btn-new { background-color: #ffcc00; }
+        
+        .btn-old { 
+            padding: 10px 20px; 
+            font-size: 0.9rem; 
+            background-color: #333; 
+            color: #fff; 
+        }
+        .btn-old:hover { background-color: #444; }
 
         .changelog {
             margin-top: 40px;
@@ -41,18 +49,14 @@
             padding: 20px;
             border-radius: 15px;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             border: 1px solid #333;
         }
         .changelog h2 { margin-top: 0; color: #84d634; font-size: 1.2rem; }
         .changelog ul { padding-left: 20px; color: #ccc; }
         .changelog li { margin-bottom: 8px; }
 
-        .feedback-section {
-            margin-top: 40px;
-            text-align: center;
-            width: 100%;
-        }
+        .feedback-section { margin-top: 40px; text-align: center; }
     </style>
 </head>
 <body>
@@ -60,30 +64,37 @@
     <h1>Kywy</h1>
     <p>AutoClicker Versions</p>
     
+    <!-- Latest Release -->
+    <h2 style="color: #84d634; margin-top: 20px;">Latest Release</h2>
     <div class="container">
-        <!-- Вставь сюда свою ссылку с MEGA для версии 0.1.1 -->
         <a href="ТВОЯ_ССЫЛКА_MEGA" class="btn btn-new">Download Pre-Release 0.1.1</a>
-        <a href="https://drive.google.com/file/d/1fwkvG9K0EqyOXh_h454W5bBlYTtvOUXk/view?usp=drive_link" class="btn">Download Pre-Release 0.1.0</a>
-        <a href="https://drive.google.com/file/d/1xA6tWn8qbxMZz6F44rnoDMKytEHPopvM/view?usp=drive_link" class="btn">Download ver alpha 0.0.4</a>
-        <a href="https://drive.google.com/file/d/17if1bk-LxtKHqZc7nQSXdwJ4sqzdHVBs/view?usp=drive_link" class="btn">Download ver alpha 0.0.3</a>
-        <a href="https://drive.google.com/file/d/1TRjyutMiPtp2E_JU-qYSro0Nd03QzqJL/view?usp=drive_link" class="btn">Download ver alpha 0.0.2</a>
-        <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn">Download ver alpha 0.0.1</a>
     </div>
 
+    <!-- Previous Versions -->
+    <h2 style="margin-top: 40px; color: #888; font-size: 1.1rem;">Previous Versions</h2>
+    <div class="container">
+        <a href="https://drive.google.com/file/d/1fwkvG9K0EqyOXh_h454W5bBlYTtvOUXk/view?usp=drive_link" class="btn btn-old">v0.1.0</a>
+        <a href="https://drive.google.com/file/d/1xA6tWn8qbxMZz6F44rnoDMKytEHPopvM/view?usp=drive_link" class="btn btn-old">alpha 0.0.4</a>
+        <a href="https://drive.google.com/file/d/17if1bk-LxtKHqZc7nQSXdwJ4sqzdHVBs/view?usp=drive_link" class="btn btn-old">alpha 0.0.3</a>
+        <a href="https://drive.google.com/file/d/1TRjyutMiPtp2E_JU-qYSro0Nd03QzqJL/view?usp=drive_link" class="btn btn-old">alpha 0.0.2</a>
+        <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn btn-old">alpha 0.0.1</a>
+    </div>
+
+    <!-- Changelog -->
     <div class="changelog">
         <h2>Changelog</h2>
         <ul>
             <li><strong>Pre-Release v0.1.1:</strong> Minor UI fixes, stability improvements, internal optimizations.</li>
-            <li><strong>Pre-Release v0.1.0:</strong> Added: Custom Intervals, Double Clicks, Middle Button Support and Improved Keyboard Support, Click Limit, Pick Location, Hotkeys, Reduced Window Size</li>
-            <li><strong>alpha 0.0.4:</strong> Removed the Window Border, Added Buttons to Close and Minimize the Window, Changed the Window Size</li>
-            <li><strong>alpha 0.0.3:</strong> Added: Right Click and Keyboard Support, Improved Click Consistency, Window Centering on StartUp</li>
-            <li><strong>alpha 0.0.2:</strong> Added: Ability to Change CPS, Dark Mode, Optimized File Size</li>
-            <li><strong>alpha 0.0.1:</strong> First Version of Kywy AutoClicker</li>
+            <li><strong>Pre-Release v0.1.0:</strong> Added: Custom Intervals, Double Clicks, Middle Button Support, Improved Keyboard Support, Click Limit, Pick Location, Hotkeys, Reduced Window Size.</li>
+            <li><strong>alpha 0.0.4:</strong> Removed Window Border, Added Close/Minimize buttons, Changed window size.</li>
+            <li><strong>alpha 0.0.3:</strong> Added Right Click & Keyboard Support, Improved consistency, Window Centering.</li>
+            <li><strong>alpha 0.0.2:</strong> Added CPS Change, Dark Mode, Optimized file size.</li>
+            <li><strong>alpha 0.0.1:</strong> First version.</li>
         </ul>
     </div>
 
     <div class="feedback-section">
-        <h2 style="color: #84d634; font-size: 1.2rem; margin-bottom: 10px;">Help Us Improve By Sending a Feedback!</h2>
+        <h2 style="color: #84d634; font-size: 1.2rem; margin-bottom: 10px;">Help Us Improve!</h2>
         <a href="mailto:kywyfeedbacks@gmail.com?subject=Отзыв о Kywy AutoClicker&body=Тип сообщения (Публичное / Приватное):%0A%0AВаш комментарий:%0A" class="btn" style="background-color: #333; color: #fff;">
             Send Feedback
         </a>
