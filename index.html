@@ -294,6 +294,12 @@
     </div>
 
     <script>
+        // Предотвращаем сохранение позиции скролла браузером и всегда кидаем наверх
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
         const themeBtn = document.getElementById('theme-btn');
         const htmlElement = document.documentElement;
 
