@@ -33,7 +33,7 @@
             margin-bottom: 20px;
         }
         .header h1 { 
-            font-size: 4rem; /* Увеличено примерно в 1.6 раза (с 2.5rem) */
+            font-size: 4rem; 
             margin: 0 0 5px 0; 
             color: #84d634; 
         }
@@ -46,12 +46,13 @@
         .description {
             width: 100%;
             background: #1a1a1a;
-            padding: 22px 26px; /* Слегка увеличены отступы для солидности блока */
+            padding: 22px 26px;
             border-radius: 12px;
             border: 1px solid #333;
+            margin-top: 25px; /* Опустили описание, добавив отступ сверху */
             margin-bottom: 25px;
             color: #ccc;
-            font-size: 1.25rem; /* Увеличено примерно в 1.3 раза (с 0.95rem) */
+            font-size: 1.25rem; 
             line-height: 1.5;
             box-sizing: border-box;
         }
@@ -124,15 +125,15 @@
             <div class="release-date">First Release Released Today At 6:00 PM ESST!</div>
         </div>
 
-        <div class="description">
-            <strong>Kywy AutoClicker</strong> is a lightweight, high-performance auto clicker written entirely in assembly language (FASM). Designed with a clean modern dark UI, minimal RAM usage, and instant responsiveness.
-        </div>
-
         <p style="margin: 0 0 10px 0; color: #aaa; text-align: left;">Download The Latest Version</p>
         
         <div class="container">
             <a href="KywyAutoClicker.exe" class="btn" id="download-btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
             <div class="download-count">Downloads: <span id="count">...</span></div>
+        </div>
+
+        <div class="description">
+            <strong>Kywy AutoClicker</strong> is a lightweight, high-performance auto clicker written entirely in assembly language (FASM). Designed with a clean modern dark UI, minimal RAM usage, and instant responsiveness.
         </div>
 
         <div class="guide">
