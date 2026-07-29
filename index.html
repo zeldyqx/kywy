@@ -17,7 +17,6 @@
             min-height: 100vh;
         }
 
-        /* Шапка сайта с логотипом слева */
         .header {
             width: 100%;
             max-width: 500px;
@@ -37,7 +36,6 @@
             margin: 0; 
         }
 
-        /* Описание приложения */
         .description {
             width: 100%;
             max-width: 500px;
@@ -52,7 +50,6 @@
             box-sizing: border-box;
         }
 
-        /* Гайд по скачиванию */
         .guide {
             width: 100%;
             max-width: 500px;
@@ -69,7 +66,7 @@
         }
         .guide strong { color: #fff; }
 
-        .container { display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+        .container { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px; }
         
         .btn {
             padding: 15px 30px;
@@ -83,6 +80,12 @@
             display: inline-block;
         }
         .btn:hover { background-color: #a3e660; transform: scale(1.05); }
+
+        /* Стиль для текста счетчика скачиваний */
+        .download-count {
+            font-size: 0.85rem;
+            color: #777;
+        }
         
         .btn-old { 
             padding: 10px 20px; 
@@ -112,32 +115,29 @@
 </head>
 <body>
 
-    <!-- Шапка (Логотип слева) -->
     <div class="header">
         <h1>Kywy</h1>
         <div class="release-date">First Release Released Today At 6:00 PM ESST!</div>
     </div>
 
-    <!-- Описание кликера -->
     <div class="description">
         <strong>Kywy AutoClicker</strong> is a lightweight, high-performance auto clicker written entirely in assembly language (FASM). Designed with a clean modern dark UI, minimal RAM usage, and instant responsiveness.
     </div>
 
     <p style="margin: 0 0 10px 0; color: #aaa;">Download The Latest Version</p>
     
-    <!-- Latest Release Button -->
+    <!-- Latest Release Button with Counter -->
     <div class="container">
-        <a href="KywyAutoClicker.exe" class="btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
+        <a href="KywyAutoClicker.exe" class="btn" id="download-btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
+        <div class="download-count">Downloads: <span id="count">...</span></div>
     </div>
 
-    <!-- Гайд по скачиванию и запуску -->
     <div class="guide">
         <strong>How to download & run:</strong><br>
         1. Click the download button above to save the application.<br>
         2. If Windows SmartScreen blocks the app, click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.
     </div>
 
-    <!-- Changelog -->
     <div class="changelog">
         <h2>Changelog</h2>
         <ul>
@@ -151,9 +151,8 @@
         </ul>
     </div>
 
-    <!-- Previous Versions -->
     <h2 class="section-title">Previous Versions</h2>
-    <div class="container">
+    <div class="container" style="flex-direction: row; flex-wrap: wrap; justify-content: center;">
         <a href="https://mega.nz/file/7e42xSBL#Rg76vTc0RQxtPREneljCJEa4lrZZE4NI9nfq6f9qYxQ" class="btn btn-old">Pre-Release v0.1.1</a>
         <a href="https://drive.google.com/file/d/1fwkvG9K0EqyOXh_h454W5bBlYTtvOUXk/view?usp=drive_link" class="btn btn-old">Pre-Release v0.1.0</a>
         <a href="https://drive.google.com/file/d/1xA6tWn8qbxMZz6F44rnoDMKytEHPopvM/view?usp=drive_link" class="btn btn-old">alpha 0.0.4</a>
@@ -162,13 +161,41 @@
         <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn btn-old">alpha 0.0.1</a>
     </div>
 
-    <!-- Feedback -->
     <div class="feedback-section">
         <h2 style="color: #84d634; font-size: 1.2rem; margin-bottom: 10px;">Help Us Improve!</h2>
         <a href="mailto:kywyfeedbacks@gmail.com?subject=Kywy AutoClicker Feedback&body=Message Type (Public / Private):%0A%0AYour Comment:%0A" class="btn" style="background-color: #333; color: #fff;">
             Send Feedback
         </a>
     </div>
+
+    <!-- Скрипт для работы счетчика скачиваний -->
+    <script>
+        // Используем бесплатный публичный счетчик API
+        const namespace = 'kywy_autoclicker';
+        const key = 'downloads';
+        const countElement = document.getElementById('count');
+        const downloadBtn = document.getElementById('download-btn');
+
+        // 1. Получаем текущее значение при загрузке страницы
+        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/`)
+            .then(response => response.json())
+            .then(data => {
+                countElement.textContent = data.count;
+            })
+            .catch(() => {
+                countElement.textContent = '0';
+            });
+
+        // 2. Увеличиваем счетчик при клике на кнопку скачивания
+        downloadBtn.addEventListener('click', () => {
+            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+                .then(response => response.json())
+                .then(data => {
+                    countElement.textContent = data.count;
+                })
+                .catch(() => {});
+        });
+    </script>
 
 </body>
 </html>
