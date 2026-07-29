@@ -7,7 +7,7 @@
     <style>
         :root {
             --bg-color: #121212;
-            --wrapper-bg: transparent;
+            --wrapper-bg: #1a1a1a;
             --text-color: #ffffff;
             --text-muted: #888;
             --text-desc: #ccc;
@@ -49,11 +49,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 40px;
+            align-items: center;
+            padding: 40px 20px;
             margin: 0;
             min-height: 100vh;
             transition: background 0.3s, color 0.3s;
+            box-sizing: border-box;
         }
 
         .wrapper {
@@ -247,7 +248,6 @@
     </div>
 
     <script>
-        // Управление темой
         const themeBtn = document.getElementById('theme-btn');
         const htmlElement = document.documentElement;
 
@@ -279,7 +279,6 @@
             }
         }
 
-        // Счетчики скачиваний (текущая версия + общая сумма всех версий)
         const namespace = 'kywy_autoclicker';
         const versions = ['downloads', 'v0_1_1', 'v0_1_0', 'alpha_0_0_4', 'alpha_0_0_3', 'alpha_0_0_2', 'alpha_0_0_1'];
         const countElement = document.getElementById('count');
@@ -300,11 +299,9 @@
 
             const counts = await Promise.all(promises);
             
-            // Заполняем текущую версию (downloads)
             const currentIndex = versions.indexOf('downloads');
             countElement.textContent = counts[currentIndex];
 
-            // Считаем общую сумму
             total = counts.reduce((acc, curr) => acc + curr, 0);
             totalCountElement.textContent = total;
         }
@@ -316,7 +313,7 @@
                 .then(response => response.json())
                 .then(data => {
                     countElement.textContent = data.count;
-                    fetchAllCounts(); // пересчитываем общую сумму
+                    fetchAllCounts();
                 })
                 .catch(() => {});
         });
