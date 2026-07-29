@@ -11,19 +11,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
+            align-items: flex-start; /* Прижимаем всё к левому краю */
+            padding: 40px;
             margin: 0;
             min-height: 100vh;
         }
 
-        /* Общий контейнер, чтобы выровнять блоки по центру по ширине макета */
         .wrapper {
             width: 100%;
             max-width: 500px;
             display: flex;
             flex-direction: column;
-            align-items: stretch;
+            align-items: flex-start;
         }
 
         .header {
@@ -72,7 +71,7 @@
         }
         .guide strong { color: #fff; }
 
-        .container { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px; width: 100%; }
+        .container { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; width: 100%; }
         
         .btn {
             padding: 15px 30px;
@@ -114,13 +113,12 @@
         .changelog li { margin-bottom: 8px; }
 
         .section-title { margin-top: 40px; color: #888; font-size: 1.1rem; width: 100%; text-align: left; }
-        .feedback-section { margin-top: 50px; text-align: center; width: 100%; }
+        .feedback-section { margin-top: 50px; text-align: left; width: 100%; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <!-- Шапка с привязкой строго к левому краю -->
         <div class="header">
             <h1>Kywy</h1>
             <div class="release-date">First Release Released Today At 6:00 PM ESST!</div>
@@ -132,8 +130,7 @@
 
         <p style="margin: 0 0 10px 0; color: #aaa; text-align: left;">Download The Latest Version</p>
         
-        <!-- Latest Release Button with Counter -->
-        <div class="container" style="align-items: flex-start;">
+        <div class="container">
             <a href="KywyAutoClicker.exe" class="btn" id="download-btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
             <div class="download-count">Downloads: <span id="count">...</span></div>
         </div>
@@ -177,7 +174,6 @@
         </div>
     </div>
 
-    <!-- Скрипт для работы счетчика скачиваний -->
     <script>
         const namespace = 'kywy_autoclicker';
         const key = 'downloads';
