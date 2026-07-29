@@ -48,6 +48,24 @@
             transition: background 0.3s, color 0.3s;
         }
 
+        /* Кнопка на всю ширину экрана в самом верху */
+        .top-bar-fixed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px 40px 0 0;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .top-bar-fixed button {
+            pointer-events: auto;
+        }
+
         .wrapper {
             width: 100%;
             max-width: 800px;
@@ -59,7 +77,7 @@
         .top-bar {
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -103,7 +121,7 @@
         .theme-toggle {
             background-color: var(--btn-bg);
             color: var(--btn-text);
-            padding: 12px 20px;
+            padding: 10px 20px;
             font-size: 0.9rem;
             border-radius: 50px;
         }
@@ -201,10 +219,14 @@
 </head>
 <body>
 
+    <!-- Фиксированная кнопка смены темы в правом верхнем углу -->
+    <div class="top-bar-fixed">
+        <button class="btn theme-toggle" id="theme-btn">☀️ Light Mode</button>
+    </div>
+
     <div class="wrapper">
         <div class="top-bar">
             <a href="index.html" class="btn btn-back">← Back to Home</a>
-            <button class="btn theme-toggle" id="theme-btn">☀️ Light Mode</button>
         </div>
 
         <div class="header">
