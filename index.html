@@ -57,6 +57,27 @@
             transition: background 0.3s, color 0.3s;
         }
 
+        /* Плавное появление всего контента при загрузке */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
         /* Кнопка на всю ширину экрана в самом верху */
         .top-bar {
             position: absolute;
@@ -69,18 +90,11 @@
             padding: 20px 40px 0 0;
             box-sizing: border-box;
             pointer-events: none;
+            animation: fadeIn 0.6s ease-out forwards;
         }
 
         .top-bar button {
             pointer-events: auto;
-        }
-
-        .wrapper {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
         }
 
         .theme-toggle {
@@ -230,7 +244,7 @@
     <div class="wrapper">
         <div class="header">
             <h1>Kywy</h1>
-            <div class="release-date">First Release Released 7/29/26 At 6:00 PM EEST!</div>
+            <div class="release-date">First Release Released Today At 6:00 PM ESST!</div>
             <div class="total-downloads">Total All Versions Downloads: <span id="total-count"><span class="spinner"></span></span></div>
         </div>
 
