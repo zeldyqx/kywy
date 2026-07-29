@@ -17,6 +17,7 @@
             --border-color: #333;
             --btn-bg: #333;
             --btn-hover: #444;
+            --btn-text: #fff;
         }
 
         [data-theme="light"] {
@@ -31,6 +32,7 @@
             --border-color: #ddd;
             --btn-bg: #e0e0e0;
             --btn-hover: #d0d0d0;
+            --btn-text: #121212;
         }
 
         body {
@@ -39,12 +41,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
+            align-items: flex-start;
+            padding: 40px;
             margin: 0;
             min-height: 100vh;
             transition: background 0.3s, color 0.3s;
-            box-sizing: border-box;
         }
 
         .wrapper {
@@ -79,11 +80,11 @@
         .btn {
             padding: 12px 24px;
             background-color: var(--btn-bg);
-            color: var(--text-color);
+            color: var(--btn-text);
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
-            transition: transform 0.2s, background 0.3s, color 0.3s;
+            transition: transform 0.2s, background 0.3s;
             text-align: center;
             display: inline-block;
             font-size: 0.95rem;
@@ -101,12 +102,11 @@
 
         .theme-toggle {
             background-color: var(--btn-bg);
-            color: var(--text-color);
+            color: var(--btn-text);
             padding: 12px 20px;
             font-size: 0.9rem;
             border-radius: 50px;
         }
-        .theme-toggle:hover { background-color: var(--btn-hover); }
 
         .releases-list {
             width: 100%;
@@ -124,7 +124,6 @@
             width: 100%;
             box-sizing: border-box;
             transition: background 0.3s, border-color 0.3s;
-            position: relative;
         }
 
         .release-card.latest {
@@ -172,14 +171,14 @@
 
         .btn-download {
             background-color: var(--btn-bg);
-            color: var(--text-color);
+            color: var(--btn-text);
             padding: 10px 20px;
             font-size: 0.9rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            transition: background 0.3s, transform 0.2s, color 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
         .btn-download:hover {
             background-color: var(--btn-hover);
