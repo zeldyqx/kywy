@@ -186,6 +186,18 @@
         </div>
 
         <div class="releases-list">
+            <!-- Release 1.0.0 -->
+            <div class="release-card">
+                <h3>Release 1.0.0</h3>
+                <ul>
+                    <li>Added active/inactive indicator, settings button, force quit button, complete button redesign, hover animations, relocated version text to an info hover button, and improved keybind assignment.</li>
+                </ul>
+                <div class="release-footer">
+                    <a href="KywyAutoClicker.exe" class="btn-download download-btn" data-version="downloads" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
+                    <div class="download-count">Downloads: <span id="count-downloads">...</span></div>
+                </div>
+            </div>
+
             <!-- Pre-Release v0.1.1 -->
             <div class="release-card">
                 <h3>Pre-Release v0.1.1</h3>
@@ -281,11 +293,9 @@
     </div>
 
     <script>
-        // Переключение тем
         const themeBtn = document.getElementById('theme-btn');
         const htmlElement = document.documentElement;
 
-        // Проверяем сохраненную тему в localStorage
         const savedTheme = localStorage.getItem('kywy_theme');
         if (savedTheme) {
             htmlElement.setAttribute('data-theme', savedTheme);
@@ -314,7 +324,6 @@
             }
         }
 
-        // Счетчик скачиваний
         const namespace = 'kywy_autoclicker';
         const downloadButtons = document.querySelectorAll('.download-btn');
 
