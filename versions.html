@@ -214,6 +214,25 @@
         .download-count {
             font-size: 0.85rem;
             color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Стиль крутящегося лоадера */
+        .spinner {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--border-color);
+            border-top: 2px solid var(--accent-color);
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -385,6 +404,9 @@
         downloadButtons.forEach(btn => {
             const versionKey = btn.getAttribute('data-version');
             const countSpan = document.getElementById(`count-${versionKey}`);
+
+            // Ставим крутящийся спиннер во время загрузки
+            countSpan.innerHTML = '<span class="spinner"></span>';
 
             fetch(`https://api.counterapi.dev/v1/${namespace}/${versionKey}/`)
                 .then(response => response.json())
