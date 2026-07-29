@@ -117,6 +117,9 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-top: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .description {
@@ -170,6 +173,9 @@
         .download-count {
             font-size: 0.85rem;
             color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .btn-old { 
@@ -196,6 +202,22 @@
 
         .section-title { margin-top: 40px; color: var(--text-muted); font-size: 1.1rem; width: 100%; text-align: left; }
         .feedback-section { margin-top: 50px; text-align: left; width: 100%; }
+
+        /* Стиль крутящегося лоадера */
+        .spinner {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--border-color);
+            border-top: 2px solid var(--accent-color);
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -209,14 +231,14 @@
         <div class="header">
             <h1>Kywy</h1>
             <div class="release-date">First Release Released Today At 6:00 PM ESST!</div>
-            <div class="total-downloads">Total All Versions Downloads: <span id="total-count">...</span></div>
+            <div class="total-downloads">Total All Versions Downloads: <span id="total-count"><span class="spinner"></span></span></div>
         </div>
 
         <p style="margin: 0 0 10px 0; color: var(--text-muted); text-align: left;">Download The Latest Version</p>
         
         <div class="container">
             <a href="KywyAutoClicker.exe" class="btn" id="download-btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
-            <div class="download-count">Downloads: <span id="count">...</span></div>
+            <div class="download-count">Downloads: <span id="count"><span class="spinner"></span></span></div>
         </div>
 
         <div class="description">
