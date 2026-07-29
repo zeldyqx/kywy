@@ -218,6 +218,41 @@
         .section-title { margin-top: 40px; color: var(--text-muted); font-size: 1.1rem; width: 100%; text-align: left; }
         .feedback-section { margin-top: 50px; text-align: left; width: 100%; }
 
+        /* Секция социальных сетей */
+        .socials-section {
+            margin-top: 40px;
+            text-align: left;
+            width: 100%;
+        }
+        .socials-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid var(--border-color);
+        }
+        .social-btn:hover {
+            background-color: var(--btn-hover);
+            transform: scale(1.03);
+        }
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            fill: #ff0000; /* Фирменный красный цвет YouTube */
+        }
+
         /* Стиль крутящегося лоадера */
         .spinner {
             width: 12px;
@@ -288,6 +323,21 @@
             <div style="display: flex; justify-content: flex-start;">
                 <a href="mailto:kywyfeedbacks@gmail.com?subject=Kywy AutoClicker Feedback&body=Message Type (Public / Private):%0A%0AYour Comment:%0A" class="btn" style="background-color: var(--btn-bg); color: var(--btn-text);">
                     Send Feedback
+                </a>
+            </div>
+        </div>
+
+        <!-- Секция соцсетей с YouTube каналом и личным каналом -->
+        <div class="socials-section">
+            <h2 style="color: var(--accent-color); font-size: 1.2rem; margin-bottom: 10px; text-align: left;">Socials</h2>
+            <div class="socials-grid">
+                <a href="https://www.youtube.com/@KywyAutoClicker" target="_blank" class="social-btn">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    Kywy AutoClicker
+                </a>
+                <a href="https://www.youtube.com/@Zeldyqx" target="_blank" class="social-btn">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    Zeldyqx
                 </a>
             </div>
         </div>
