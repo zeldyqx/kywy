@@ -1,202 +1,202 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kywy | All Versions</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 40px;
-            margin: 0;
-            min-height: 100vh;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kywy | All Versions</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 40px;
+            margin: 0;
+            min-height: 100vh;
+        }
 
-        .wrapper {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
+        .wrapper {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        .header {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
-        .header h1 { 
-            font-size: 3rem; 
-            margin: 0 0 5px 0; 
-            color: #84d634; 
-        }
+        .header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .header h1 { 
+            font-size: 3rem; 
+            margin: 0 0 5px 0; 
+            color: #84d634; 
+        }
 
-        .btn {
-            padding: 12px 24px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: transform 0.2s, background 0.3s;
-            text-align: center;
-            display: inline-block;
-            font-size: 0.95rem;
-        }
-        .btn:hover { background-color: #444; transform: scale(1.02); }
+        .btn {
+            padding: 12px 24px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.3s;
+            text-align: center;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+        .btn:hover { background-color: #444; transform: scale(1.02); }
 
-        .btn-back {
-            background-color: #84d634;
-            color: #000;
-            margin-bottom: 20px;
-        }
-        .btn-back:hover { background-color: #a3e660; }
+        .btn-back {
+            background-color: #84d634;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .btn-back:hover { background-color: #a3e660; }
 
-        /* Стили под GitHub-релизы */
-        .releases-list {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 10px;
-        }
+        /* Стили под GitHub-релизы */
+        .releases-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 10px;
+        }
 
-        .release-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 22px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+        .release-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 22px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        .release-card h3 {
-            margin: 0 0 12px 0;
-            color: #84d634;
-            font-size: 1.3rem;
-        }
+        .release-card h3 {
+            margin: 0 0 12px 0;
+            color: #84d634;
+            font-size: 1.3rem;
+        }
 
-        .release-card ul {
-            padding-left: 20px;
-            color: #ccc;
-            margin: 0 0 20px 0;
-            line-height: 1.5;
-        }
+        .release-card ul {
+            padding-left: 20px;
+            color: #ccc;
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
 
-        .release-card li {
-            margin-bottom: 6px;
-        }
+        .release-card li {
+            margin-bottom: 6px;
+        }
 
-        .btn-download {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .btn-download:hover {
-            background-color: #444;
-            transform: scale(1.03);
-        }
-    </style>
+        .btn-download {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-download:hover {
+            background-color: #444;
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <a href="index.html" class="btn btn-back">← Back to Home</a>
+    <div class="wrapper">
+        <a href="index.html" class="btn btn-back">← Back to Home</a>
 
-        <div class="header">
-            <h1>All Versions</h1>
-            <p style="color: #888; margin: 0;">Archive of all released versions of Kywy AutoClicker.</p>
-        </div>
+        <div class="header">
+            <h1>All Versions</h1>
+            <p style="color: #888; margin: 0;">Archive of all released versions of Kywy AutoClicker.</p>
+        </div>
 
-        <div class="releases-list">
-            <!-- Pre-Release v0.1.1 -->
-            <div class="release-card">
-                <h3>Pre-Release v0.1.1</h3>
-                <ul>
-                    <li>Fixed Pick Location Hotkey Not Working</li>
-                    <li>Fixed Buttons Overlapping</li>
-                    <li>Added Hold Mode</li>
-                    <li>Corners are Rounded Now</li>
-                    <li>Added DPI Awareness</li>
-                    <li>Changed the Font</li>
-                    <li>Relocated All Buttons</li>
-                    <li>Changed Intervals to RadioButtons</li>
-                </ul>
-                <a href="https://mega.nz/file/7e42xSBL#Rg76vTc0RQxtPREneljCJEa4lrZZE4NI9nfq6f9qYxQ" class="btn-download">Download v0.1.1</a>
-            </div>
+        <div class="releases-list">
+            <!-- Pre-Release v0.1.1 -->
+            <div class="release-card">
+                <h3>Pre-Release v0.1.1</h3>
+                <ul>
+                    <li>Fixed Pick Location Hotkey Not Working</li>
+                    <li>Fixed Buttons Overlapping</li>
+                    <li>Added Hold Mode</li>
+                    <li>Corners are Rounded Now</li>
+                    <li>Added DPI Awareness</li>
+                    <li>Changed the Font</li>
+                    <li>Relocated All Buttons</li>
+                    <li>Changed Intervals to RadioButtons</li>
+                </ul>
+                <a href="https://mega.nz/file/7e42xSBL#Rg76vTc0RQxtPREneljCJEa4lrZZE4NI9nfq6f9qYxQ" class="btn-download">Download v0.1.1</a>
+            </div>
 
-            <!-- Pre-Release v0.1.0 -->
-            <div class="release-card">
-                <h3>Pre-Release v0.1.0</h3>
-                <ul>
-                    <li>Added Custom Intervals</li>
-                    <li>Double Clicks</li>
-                    <li>Middle Button Support</li>
-                    <li>Improved Keyboard Support</li>
-                    <li>Added Stop At (Amount of Clicks)</li>
-                    <li>Added Pick Location</li>
-                    <li>Added Hotkeys</li>
-                    <li>Reduced Window Size</li>
-                </ul>
-                <a href="https://drive.google.com/file/d/1fwkvG9K0EqyOXh_h454W5bBlYTtvOUXk/view?usp=drive_link" class="btn-download">Download v0.1.0</a>
-            </div>
+            <!-- Pre-Release v0.1.0 -->
+            <div class="release-card">
+                <h3>Pre-Release v0.1.0</h3>
+                <ul>
+                    <li>Added Custom Intervals</li>
+                    <li>Double Clicks</li>
+                    <li>Middle Button Support</li>
+                    <li>Improved Keyboard Support</li>
+                    <li>Added Stop At (Amount of Clicks)</li>
+                    <li>Added Pick Location</li>
+                    <li>Added Hotkeys</li>
+                    <li>Reduced Window Size</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1fwkvG9K0EqyOXh_h454W5bBlYTtvOUXk/view?usp=drive_link" class="btn-download">Download v0.1.0</a>
+            </div>
 
-            <!-- alpha 0.0.4 -->
-            <div class="release-card">
-                <h3>alpha 0.0.4</h3>
-                <ul>
-                    <li>Removed Window Border</li>
-                    <li>Added Close/Minimize Buttons</li>
-                    <li>Resized the Window</li>
-                </ul>
-                <a href="https://drive.google.com/file/d/1xA6tWn8qbxMZz6F44rnoDMKytEHPopvM/view?usp=drive_link" class="btn-download">Download alpha 0.0.4</a>
-            </div>
+            <!-- alpha 0.0.4 -->
+            <div class="release-card">
+                <h3>alpha 0.0.4</h3>
+                <ul>
+                    <li>Removed Window Border</li>
+                    <li>Added Close/Minimize Buttons</li>
+                    <li>Resized the Window</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1xA6tWn8qbxMZz6F44rnoDMKytEHPopvM/view?usp=drive_link" class="btn-download">Download alpha 0.0.4</a>
+            </div>
 
-            <!-- alpha 0.0.3 -->
-            <div class="release-card">
-                <h3>alpha 0.0.3</h3>
-                <ul>
-                    <li>Added Right Click & Keyboard Support</li>
-                    <li>Added Window Centering</li>
-                    <li>Improved Click Consistency</li>
-                </ul>
-                <a href="https://drive.google.com/file/d/17if1bk-LxtKHqZc7nQSXdwJ4sqzdHVBs/view?usp=drive_link" class="btn-download">Download alpha 0.0.3</a>
-            </div>
+            <!-- alpha 0.0.3 -->
+            <div class="release-card">
+                <h3>alpha 0.0.3</h3>
+                <ul>
+                    <li>Added Right Click & Keyboard Support</li>
+                    <li>Added Window Centering</li>
+                    <li>Improved Click Consistency</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/17if1bk-LxtKHqZc7nQSXdwJ4sqzdHVBs/view?usp=drive_link" class="btn-download">Download alpha 0.0.3</a>
+            </div>
 
-            <!-- alpha 0.0.2 -->
-            <div class="release-card">
-                <h3>alpha 0.0.2</h3>
-                <ul>
-                    <li>Added CPS changing</li>
-                    <li>Dark Mode added</li>
-                    <li>Optimized file size</li>
-                </ul>
-                <a href="https://drive.google.com/file/d/1TRjyutMiPtp2E_JU-qYSro0Nd03QzqJL/view?usp=drive_link" class="btn-download">Download alpha 0.0.2</a>
-            </div>
+            <!-- alpha 0.0.2 -->
+            <div class="release-card">
+                <h3>alpha 0.0.2</h3>
+                <ul>
+                    <li>Added CPS changing</li>
+                    <li>Dark Mode added</li>
+                    <li>Optimized file size</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1TRjyutMiPtp2E_JU-qYSro0Nd03QzqJL/view?usp=drive_link" class="btn-download">Download alpha 0.0.2</a>
+            </div>
 
-            <!-- alpha 0.0.1 -->
-            <div class="release-card">
-                <h3>alpha 0.0.1</h3>
-                <ul>
-                    <li>First version of Kywy AutoClicker</li>
-                </ul>
-                <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn-download">Download alpha 0.0.1</a>
-            </div>
-        </div>
-    </div>
+            <!-- alpha 0.0.1 -->
+            <div class="release-card">
+                <h3>alpha 0.0.1</h3>
+                <ul>
+                    <li>First version of Kywy AutoClicker</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn-download">Download alpha 0.0.1</a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
