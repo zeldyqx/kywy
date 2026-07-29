@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kywy | AutoClicker</title>
+    <title>Kywy | All Versions</title>
     <style>
         body {
             background-color: #121212;
@@ -30,170 +30,64 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .header h1 { 
-            font-size: 4rem; 
+            font-size: 3rem; 
             margin: 0 0 5px 0; 
             color: #84d634; 
         }
-        .header .release-date { 
-            font-size: 0.85rem; 
-            color: #888; 
-            margin: 0; 
-        }
 
-        .description {
-            width: 100%;
-            background: #1a1a1a;
-            padding: 22px 26px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            margin-top: 25px;
-            margin-bottom: 25px;
-            color: #ccc;
-            font-size: 1.25rem; 
-            line-height: 1.5;
-            box-sizing: border-box;
+        .container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            gap: 10px; 
+            margin-top: 10px; 
+            width: 100%; 
         }
-
-        .guide {
-            width: 100%;
-            background: #161616;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 1px dashed #444;
-            margin-top: 15px;
-            margin-bottom: 30px;
-            color: #aaa;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            box-sizing: border-box;
-        }
-        .guide strong { color: #fff; }
-
-        .container { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; width: 100%; }
         
         .btn {
-            padding: 15px 30px;
-            background-color: #84d634;
-            color: #000;
+            padding: 12px 24px;
+            background-color: #333;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
             transition: transform 0.2s, background 0.3s;
             text-align: center;
             display: inline-block;
+            font-size: 0.95rem;
         }
-        .btn:hover { background-color: #a3e660; transform: scale(1.05); }
+        .btn:hover { background-color: #444; transform: scale(1.02); }
 
-        .download-count {
-            font-size: 0.85rem;
-            color: #777;
+        .btn-back {
+            background-color: #84d634;
+            color: #000;
+            margin-bottom: 20px;
         }
-        
-        .btn-old { 
-            padding: 10px 20px; 
-            font-size: 0.9rem; 
-            background-color: #333; 
-            color: #fff; 
-        }
-        .btn-old:hover { background-color: #444; }
-
-        .changelog {
-            margin-top: 20px;
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 15px;
-            width: 100%;
-            border: 1px solid #333;
-            box-sizing: border-box;
-        }
-        .changelog h2 { margin-top: 0; color: #84d634; font-size: 1.2rem; }
-        .changelog ul { padding-left: 20px; color: #ccc; }
-        .changelog li { margin-bottom: 8px; }
-
-        .section-title { margin-top: 40px; color: #888; font-size: 1.1rem; width: 100%; text-align: left; }
-        .feedback-section { margin-top: 50px; text-align: left; width: 100%; }
+        .btn-back:hover { background-color: #a3e660; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
+        <a href="index.html" class="btn btn-back">← Back to Home</a>
+
         <div class="header">
-            <h1>Kywy</h1>
-            <div class="release-date">First Release Released Today At 6:00 PM ESST!</div>
+            <h1>All Versions</h1>
+            <p style="color: #888; margin: 0;">Archive of all released versions of Kywy AutoClicker.</p>
         </div>
 
-        <p style="margin: 0 0 10px 0; color: #aaa; text-align: left;">Download The Latest Version</p>
-        
         <div class="container">
-            <a href="KywyAutoClicker.exe" class="btn" id="download-btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
-            <div class="download-count">Downloads: <span id="count">...</span></div>
-        </div>
-
-        <div class="description">
-            <strong>Kywy AutoClicker</strong> is an advanced, lightweight, and high-performance AutoClicker. It was specifically made to deliver maximum click consistency with minimum performance loss.
-        </div>
-
-        <div class="guide">
-            <strong>How to download & run:</strong><br>
-            1. Click the download button above to save the application.<br>
-            2. If Windows SmartScreen blocks the app, click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.
-        </div>
-
-        <div class="changelog">
-            <h2>Changelog</h2>
-            <ul>
-                <li><strong>Release 1.0.0:</strong> Added active/inactive indicator, settings button, force quit button, complete button redesign, hover animations, relocated version text to an info hover button, and improved keybind assignment.</li>
-                <li><strong>Pre-Release v0.1.1:</strong> Fixed Pick Location Button Not Working, Fixed Buttons Cutting Off, Added Toggle Mode, Corners are Rounded Now, Added DPI Awareness, Changed the Font, Relocated Buttons, Changed Intervals to RadioButtons.</li>
-                <li><strong>Pre-Release v0.1.0:</strong> Added: Custom Intervals, Double Clicks, Middle Button Support, Improved Keyboard Support, Click Limit, Pick Location, Hotkeys, Reduced Window Size.</li>
-                <li><strong>alpha 0.0.4:</strong> Removed Window Border, Added Close/Minimize buttons, Changed window size.</li>
-                <li><strong>alpha 0.0.3:</strong> Added Right Click & Keyboard Support, Improved consistency, Window Centering.</li>
-                <li><strong>alpha 0.0.2:</strong> Added CPS Change, Dark Mode, Optimized file size.</li>
-                <li><strong>alpha 0.0.1:</strong> First version.</li>
-            </ul>
-        </div>
-
-        <h2 class="section-title">Previous Versions</h2>
-        <div class="container" style="flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 10px;">
-            <a href="versions.html" class="btn btn-old" style="background-color: #84d634; color: #000; font-weight: bold;">All Versions</a>
-        </div>
-
-        <div class="feedback-section">
-            <h2 style="color: #84d634; font-size: 1.2rem; margin-bottom: 10px; text-align: left;">Help Us Improve!</h2>
-            <div style="display: flex; justify-content: flex-start;">
-                <a href="mailto:kywyfeedbacks@gmail.com?subject=Kywy AutoClicker Feedback&body=Message Type (Public / Private):%0A%0AYour Comment:%0A" class="btn" style="background-color: #333; color: #fff;">
-                    Send Feedback
-                </a>
-            </div>
+            <a href="https://mega.nz/file/7e42xSBL#Rg76vTc0RQxtPREneljCJEa4lrZZE4NI9nfq6f9qYxQ" class="btn">Pre-Release v0.1.1</a>
+            <a href="https://drive.google.com/file/d/1fwkvG9K0EqyOXh_h454W5bBlYTtvOUXk/view?usp=drive_link" class="btn">Pre-Release v0.1.0</a>
+            <a href="https://drive.google.com/file/d/1xA6tWn8qbxMZz6F44rnoDMKytEHPopvM/view?usp=drive_link" class="btn">alpha 0.0.4</a>
+            <a href="https://drive.google.com/file/d/17if1bk-LxtKHqZc7nQSXdwJ4sqzdHVBs/view?usp=drive_link" class="btn">alpha 0.0.3</a>
+            <a href="https://drive.google.com/file/d/1TRjyutMiPtp2E_JU-qYSro0Nd03QzqJL/view?usp=drive_link" class="btn">alpha 0.0.2</a>
+            <a href="https://drive.google.com/file/d/1zB7dgZCh6YE7wHCs5N3OJ8lHAAhDMwWb/view?usp=drivesdk" class="btn">alpha 0.0.1</a>
         </div>
     </div>
-
-    <script>
-        const namespace = 'kywy_autoclicker';
-        const key = 'downloads';
-        const countElement = document.getElementById('count');
-        const downloadBtn = document.getElementById('download-btn');
-
-        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/`)
-            .then(response => response.json())
-            .then(data => {
-                countElement.textContent = data.count;
-            })
-            .catch(() => {
-                countElement.textContent = '0';
-            });
-
-        downloadBtn.addEventListener('click', () => {
-            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
-                .then(response => response.json())
-                .then(data => {
-                    countElement.textContent = data.count;
-                })
-                .catch(() => {});
-            });
-    </script>
 
 </body>
 </html>
