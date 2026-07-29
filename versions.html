@@ -5,9 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kywy | All Versions</title>
     <style>
+        :root {
+            --bg-color: #121212;
+            --wrapper-bg: #1a1a1a;
+            --text-color: #ffffff;
+            --text-muted: #888;
+            --text-list: #ccc;
+            --accent-color: #84d634;
+            --accent-hover: #a3e660;
+            --accent-text: #000;
+            --border-color: #333;
+            --btn-bg: #333;
+            --btn-hover: #444;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f4f4f4;
+            --wrapper-bg: #ffffff;
+            --text-color: #121212;
+            --text-muted: #666;
+            --text-list: #444;
+            --accent-color: #5ab211;
+            --accent-hover: #48930d;
+            --accent-text: #fff;
+            --border-color: #ddd;
+            --btn-bg: #e0e0e0;
+            --btn-hover: #d0d0d0;
+        }
+
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
@@ -15,6 +43,7 @@
             padding: 40px;
             margin: 0;
             min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
         }
 
         .wrapper {
@@ -23,6 +52,14 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+        }
+
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         .header {
@@ -35,29 +72,40 @@
         .header h1 { 
             font-size: 3rem; 
             margin: 0 0 5px 0; 
-            color: #84d634; 
+            color: var(--accent-color); 
         }
 
         .btn {
             padding: 12px 24px;
-            background-color: #333;
-            color: #fff;
+            background-color: var(--btn-bg);
+            color: var(--text-color);
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
-            transition: transform 0.2s, background 0.3s;
+            transition: transform 0.2s, background 0.3s, color 0.3s;
             text-align: center;
             display: inline-block;
             font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
         }
-        .btn:hover { background-color: #444; transform: scale(1.02); }
+        .btn:hover { background-color: var(--btn-hover); transform: scale(1.02); }
 
         .btn-back {
-            background-color: #84d634;
-            color: #000;
-            margin-bottom: 20px;
+            background-color: var(--accent-color);
+            color: var(--accent-text);
+            margin-bottom: 0;
         }
-        .btn-back:hover { background-color: #a3e660; }
+        .btn-back:hover { background-color: var(--accent-hover); }
+
+        .theme-toggle {
+            background-color: var(--btn-bg);
+            color: var(--text-color);
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border-radius: 50px;
+        }
+        .theme-toggle:hover { background-color: var(--btn-hover); }
 
         /* Стили под GitHub-релизы */
         .releases-list {
@@ -69,23 +117,24 @@
         }
 
         .release-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: var(--wrapper-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 22px;
             width: 100%;
             box-sizing: border-box;
+            transition: background 0.3s, border-color 0.3s;
         }
 
         .release-card h3 {
             margin: 0 0 12px 0;
-            color: #84d634;
+            color: var(--accent-color);
             font-size: 1.3rem;
         }
 
         .release-card ul {
             padding-left: 20px;
-            color: #ccc;
+            color: var(--text-list);
             margin: 0 0 20px 0;
             line-height: 1.5;
         }
@@ -102,35 +151,38 @@
         }
 
         .btn-download {
-            background-color: #333;
-            color: #fff;
+            background-color: var(--btn-bg);
+            color: var(--text-color);
             padding: 10px 20px;
             font-size: 0.9rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s, color 0.3s;
         }
         .btn-download:hover {
-            background-color: #444;
+            background-color: var(--btn-hover);
             transform: scale(1.03);
         }
 
         .download-count {
             font-size: 0.85rem;
-            color: #777;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <a href="index.html" class="btn btn-back">← Back to Home</a>
+        <div class="top-bar">
+            <a href="index.html" class="btn btn-back">← Back to Home</a>
+            <button class="btn theme-toggle" id="theme-btn">☀️ Light Mode</button>
+        </div>
 
         <div class="header">
             <h1>All Versions</h1>
-            <p style="color: #888; margin: 0;">Archive of all released versions of Kywy AutoClicker.</p>
+            <p style="color: var(--text-muted); margin: 0;">Archive of all released versions of Kywy AutoClicker.</p>
         </div>
 
         <div class="releases-list">
@@ -229,6 +281,40 @@
     </div>
 
     <script>
+        // Переключение тем
+        const themeBtn = document.getElementById('theme-btn');
+        const htmlElement = document.documentElement;
+
+        // Проверяем сохраненную тему в localStorage
+        const savedTheme = localStorage.getItem('kywy_theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            if (newTheme === 'light') {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('kywy_theme', 'light');
+            } else {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('kywy_theme', 'dark');
+            }
+            updateThemeButton(newTheme);
+        });
+
+        function updateThemeButton(theme) {
+            if (theme === 'light') {
+                themeBtn.textContent = '🌙 Dark Mode';
+            } else {
+                themeBtn.textContent = '☀️ Light Mode';
+            }
+        }
+
+        // Счетчик скачиваний
         const namespace = 'kywy_autoclicker';
         const downloadButtons = document.querySelectorAll('.download-btn');
 
@@ -236,7 +322,6 @@
             const versionKey = btn.getAttribute('data-version');
             const countSpan = document.getElementById(`count-${versionKey}`);
 
-            // Получаем текущее количество скачиваний для этой версии
             fetch(`https://api.counterapi.dev/v1/${namespace}/${versionKey}/`)
                 .then(response => response.json())
                 .then(data => {
@@ -246,7 +331,6 @@
                     countSpan.textContent = '0';
                 });
 
-            // Увеличиваем счетчик при клике
             btn.addEventListener('click', () => {
                 fetch(`https://api.counterapi.dev/v1/${namespace}/${versionKey}/up`)
                     .then(response => response.json())
