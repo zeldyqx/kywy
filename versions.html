@@ -107,7 +107,6 @@
         }
         .theme-toggle:hover { background-color: var(--btn-hover); }
 
-        /* Стили под GitHub-релизы */
         .releases-list {
             width: 100%;
             display: flex;
@@ -124,12 +123,32 @@
             width: 100%;
             box-sizing: border-box;
             transition: background 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .release-card.latest {
+            border-color: var(--accent-color);
         }
 
         .release-card h3 {
             margin: 0 0 12px 0;
             color: var(--accent-color);
             font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .latest-badge {
+            background-color: var(--accent-color);
+            color: var(--accent-text);
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .release-card ul {
@@ -166,6 +185,14 @@
             transform: scale(1.03);
         }
 
+        .release-card.latest .btn-download {
+            background-color: var(--accent-color);
+            color: var(--accent-text);
+        }
+        .release-card.latest .btn-download:hover {
+            background-color: var(--accent-hover);
+        }
+
         .download-count {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -186,11 +213,17 @@
         </div>
 
         <div class="releases-list">
-            <!-- Release 1.0.0 -->
-            <div class="release-card">
-                <h3>Release 1.0.0</h3>
+            <!-- Release 1.0.0 (Latest) -->
+            <div class="release-card latest">
+                <h3>Release 1.0.0 <span class="latest-badge">Latest Release</span></h3>
                 <ul>
-                    <li>Added active/inactive indicator, settings button, force quit button, complete button redesign, hover animations, relocated version text to an info hover button, and improved keybind assignment.</li>
+                    <li>Added active/inactive indicator</li>
+                    <li>Added settings button</li>
+                    <li>Added force quit button</li>
+                    <li>Complete button redesign</li>
+                    <li>Added hover animations</li>
+                    <li>Relocated version text to an info hover button</li>
+                    <li>Improved keybind assignment</li>
                 </ul>
                 <div class="release-footer">
                     <a href="KywyAutoClicker.exe" class="btn-download download-btn" data-version="downloads" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
