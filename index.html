@@ -179,6 +179,17 @@
         }
         .guide strong { color: var(--text-color); }
 
+        /* Интерактивная ссылка в гайде */
+        .guide-link {
+            color: var(--accent-color);
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .guide-link:hover {
+            color: var(--accent-hover);
+        }
+
         .container { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; width: 100%; }
         
         .btn {
@@ -188,13 +199,19 @@
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
-            transition: transform 0.2s, background 0.3s;
+            transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
             text-align: center;
             display: inline-block;
             border: none;
             cursor: pointer;
         }
         .btn:hover { background-color: var(--accent-hover); transform: scale(1.05); }
+
+        /* Эффект подсветки кнопки при наведении на текст в гайде */
+        .btn.highlighted {
+            box-shadow: 0 0 20px var(--accent-color);
+            transform: scale(1.05);
+        }
 
         .download-count {
             font-size: 0.85rem;
@@ -270,7 +287,7 @@
 <body>
 
     <div class="top-bar">
-        <button class="theme-toggle" id="theme-btn">☀️ Light Mode Message</button>
+        <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
     </div>
 
     <div class="wrapper">
@@ -295,10 +312,10 @@
         <div class="guide">
             <h2>How to Download & Run Guide</h2>
             <ol>
-                <li>Click the <strong>"Download Release 1.0.0"</strong> button above to save the executable file to your computer</li>
+                <li>Click the <strong class="guide-link" id="jump-to-download">"Download Release 1.0.0"</strong> button above to save the executable file to your computer</li>
                 <li>If your browser or Windows gives you a warning about an unrecognized file, don't worry, it's completely safe</li>
                 <li>If Windows SmartScreen blocks the app from running, click on <strong>"More info"</strong> in the popup window</li>
-                <li>Then click the <strong>"Run anyway"</strong>button<li>
+                <li>Then click the <strong>"Run anyway"</strong> button</li>
                 <li>Open the application and enjoy using Kywy AutoClicker!</li>
                 <li>You can contact me for any questions in my discord server!</li>
             </ol>
@@ -376,11 +393,23 @@
             }
         }
 
+        // Логика плавной прокрутки и подсветки кнопки из гайда
+        const jumpLink = document.getElementById('jump-to-download');
+        const mainDownloadBtn = document.getElementById('download-btn');
+
+        jumpLink.addEventListener('mouseenter', () => {
+            mainDownloadBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            mainDownloadBtn.classList.add('highlighted');
+        });
+
+        jumpLink.addEventListener('mouseleave', () => {
+            mainDownloadBtn.classList.remove('highlighted');
+        });
+
         const namespace = 'kywy_autoclicker';
         const versions = ['downloads', 'v0_1_1', 'v0_1_0', 'alpha_0_0_4', 'alpha_0_0_3', 'alpha_0_0_2', 'alpha_0_0_1'];
         const countElement = document.getElementById('count');
         const totalCountElement = document.getElementById('total-count');
-        const downloadBtn = document.getElementById('download-btn');
 
         async function fetchAllCounts() {
             let total = 0;
@@ -405,7 +434,7 @@
 
         fetchAllCounts();
 
-        downloadBtn.addEventListener('click', () => {
+        mainDownloadBtn.addEventListener('click', () => {
             fetch(`https://api.counterapi.dev/v1/${namespace}/downloads/up`)
                 .then(response => response.json())
                 .then(data => {
