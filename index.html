@@ -293,7 +293,7 @@
     <div class="wrapper">
         <div class="header">
             <h1>Kywy</h1>
-            <div class="release-date">First Release Released 7/29/26 At 6:00 PM EEST!</div>
+            <div class="release-date">First Release Released Today At 6:00 PM EEST!</div>
             <div class="total-downloads">Total All Versions Downloads: <span id="total-count"><span class="spinner"></span></span></div>
         </div>
 
@@ -328,10 +328,11 @@
 
         <div class="feedback-section">
             <h2 style="color: var(--accent-color); font-size: 1.2rem; margin-bottom: 10px; text-align: left;">Help Us Improve!</h2>
-            <div style="display: flex; justify-content: flex-start;">
-                <a href="mailto:kywyfeedbacks@gmail.com?subject=Kywy AutoClicker Feedback&body=Message Type (Public / Private):%0A%0AYour Comment:%0A" class="btn" style="background-color: var(--btn-bg); color: var(--btn-text);">
+            <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                <a href="mailto:kywyautoclicker@gmail.com?subject=Kywy%20AutoClicker%20Feedback&body=Message%20Type%20(Public%20/%20Private):%0A%0AYour%20Comment:" class="btn" style="background-color: var(--btn-bg); color: var(--btn-text);">
                     Send Feedback
                 </a>
+                <span id="copy-email-hint" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer;" title="Click to copy email">Copy Email (kywyautoclicker@gmail.com)</span>
             </div>
         </div>
     </div>
@@ -385,6 +386,19 @@
             setTimeout(() => {
                 mainDownloadBtn.classList.remove('highlighted');
             }, 1200);
+        });
+
+        // Копирование почты по клику для удобства
+        document.getElementById('copy-email-hint').addEventListener('click', () => {
+            navigator.clipboard.writeText('kywyautoclicker@gmail.com');
+            const hint = document.getElementById('copy-email-hint');
+            const originalText = hint.textContent;
+            hint.textContent = 'Email Copied!';
+            hint.style.color = 'var(--accent-color)';
+            setTimeout(() => {
+                hint.textContent = originalText;
+                hint.style.color = 'var(--text-muted)';
+            }, 2000);
         });
 
         const namespace = 'kywy_autoclicker';
