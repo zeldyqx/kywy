@@ -8,7 +8,6 @@
     <style>
         :root {
             --bg-color: #121212;
-            --wrapper-bg: transparent;
             --text-color: #ffffff;
             --text-muted: #888;
             --text-desc: #ccc;
@@ -26,7 +25,6 @@
 
         [data-theme="light"] {
             --bg-color: #f4f4f4;
-            --wrapper-bg: #ffffff;
             --text-color: #121212;
             --text-muted: #666;
             --text-desc: #444;
@@ -42,227 +40,73 @@
             --btn-text: #121212;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 40px;
-            margin: 0;
-            min-height: 100vh;
-            transition: background 0.3s, color 0.3s;
-        }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; padding: 40px; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        .wrapper { width: 100%; max-width: 800px; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(45px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .wrapper {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            animation: fadeIn 1.8s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-        }
-
-        .top-bar-fixed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 20px 40px 0 0;
-            box-sizing: border-box;
-            pointer-events: none;
-            animation: fadeIn 1.8s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .top-bar-fixed > * { pointer-events: auto; }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border-radius: 50px;
-            transition: background 0.3s, transform 0.2s;
-            border: 1px solid var(--border-color);
-        }
-        .social-btn:hover { background-color: var(--btn-hover); transform: scale(1.03); }
+        .top-bar { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 40px; }
+        .social-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; font-weight: bold; border-radius: 50px; border: 1px solid var(--border-color); }
         .social-icon { width: 18px; height: 18px; }
 
-        .theme-toggle {
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            border-radius: 50px;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .theme-toggle:hover { background-color: var(--btn-hover); transform: scale(1.02); }
-
-        .header { width: 100%; display: flex; flex-direction: column; align-items: flex-start; margin-top: 15px; margin-bottom: 30px; }
-        .header h1 { font-size: 4rem; margin: 0 0 5px 0; color: var(--accent-color); }
-        .header .release-date { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
-
-        .total-downloads { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; display: inline-flex; align-items: center; gap: 6px; }
-
-        .description {
-            width: 100%;
-            background: var(--card-bg);
-            padding: 22px 26px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-top: 25px;
-            margin-bottom: 25px;
-            color: var(--text-desc);
-            font-size: 1.25rem;
-            line-height: 1.5;
-            box-sizing: border-box;
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .guide { width: 100%; background: var(--guide-bg); padding: 22px 26px; border-radius: 12px; border: 1px dashed var(--border-color); margin-top: 10px; margin-bottom: 30px; color: var(--text-guide); font-size: 0.95rem; line-height: 1.6; box-sizing: border-box; transition: background 0.3s, border-color 0.3s; }
-        .guide h2 { margin-top: 0; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 12px; }
-
-        .container { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; width: 100%; }
+        .btn { padding: 15px 30px; background-color: var(--accent-color); color: var(--accent-text); font-weight: bold; border-radius: 50px; border: none; cursor: pointer; display: inline-block; text-decoration: none; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); }
         
-        .btn { padding: 15px 30px; background-color: var(--accent-color); color: var(--accent-text); text-decoration: none; font-weight: bold; border-radius: 50px; transition: transform 0.2s, background 0.3s, box-shadow 0.3s; text-align: center; display: inline-block; border: none; cursor: pointer; }
-        .btn:hover { background-color: var(--accent-hover); transform: scale(1.05); }
-        .btn.highlighted { box-shadow: 0 0 25px var(--accent-color); transform: scale(1.08); }
+        /* Исправление ссылки в гайде */
+        .guide-link { 
+            color: var(--accent-color); 
+            cursor: pointer; 
+            text-decoration: underline;
+            padding: 2px 6px;
+            background: rgba(132, 214, 52, 0.1);
+            border-radius: 4px;
+        }
+        .guide-link:hover { background: rgba(132, 214, 52, 0.2); }
 
-        .download-count { font-size: 0.85rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 6px; }
-        .btn-old { padding: 10px 20px; font-size: 0.9rem; background-color: var(--btn-bg); color: var(--btn-text); }
-        .section-title { margin-top: 40px; color: var(--text-muted); font-size: 1.1rem; width: 100%; text-align: left; }
-        .feedback-section { margin-top: 50px; text-align: left; width: 100%; }
-        
-        .spinner { width: 12px; height: 12px; border: 2px solid var(--border-color); border-top: 2px solid var(--accent-color); border-radius: 50%; display: inline-block; animation: spin 0.8s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .description, .guide { width: 100%; background: var(--card-bg); padding: 22px; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 20px; box-sizing: border-box; }
+        .section-title { color: var(--text-muted); font-size: 1.1rem; margin-top: 30px; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar-fixed">
-        <a href="https://discord.gg/PDTmSxJ8R" target="_blank" class="social-btn">Discord</a>
-        <a href="https://www.youtube.com/@KywyAutoClicker" target="_blank" class="social-btn">YouTube</a>
-        <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
-    </div>
-
     <div class="wrapper">
-        <div class="header">
-            <h1>Kywy</h1>
-            <div class="release-date">First Release Released 7/29/26 At 6:00 PM EEST!</div>
-            <div class="total-downloads">Total All Versions Downloads: <span id="total-count"><span class="spinner"></span></span></div>
+        <div class="top-bar">
+            <a href="https://discord.gg/PDTmSxJ8R" class="social-btn">
+                <svg class="social-icon" style="fill: #5865F2;" viewBox="0 0 24 24"><path d="M20.317 4.37c-4.885-1.515-10.37-1.515-15.26 0-.07.02-.13.06-.18.11a19.7 19.7 0 0 0-1.58 13.68c.03.11.08.2.16.27 1.83 1.34 3.75 2.27 5.75 2.85.08.02.16-.02.2-.09.34-.63.63-1.28.87-1.95.03-.09.02-.2-.04-.27-.85-.31-1.68-.69-2.48-1.12-.08-.04-.08-.15-.03-.2.03-.04.07-.06.12-.07 3.94 1.84 8.2 1.84 12.14 0 .05 0 .09.03.12.07.05.05.05.16-.03.2-.8.43-1.63.81-2.48 1.12-.06.02-.09.12-.06.2.23.66.52 1.32.87 1.95.03.07.1.11.18.09 2-0.58 3.92-1.51 5.75-2.85.08-.07.13-.16.16-.27a19.7 19.7 0 0 0-1.58-13.68c-.05-.05-.11-.09-.18-.11zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.09 2.18 2.42 0 1.33-.97 2.42-2.18 2.42zm7.98 0c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.09 2.18 2.42 0 1.33-.97 2.42-2.18 2.42z"/></svg>
+                Discord
+            </a>
+            <a href="https://www.youtube.com/@KywyAutoClicker" class="social-btn">
+                <svg class="social-icon" style="fill: #ff0000;" viewBox="0 0 24 24"><path d="M23.5 6.2c-.1-1.3-1.2-2.3-2.5-2.4C17.3 3.5 12 3.5 12 3.5s-5.3 0-9 .3c-1.3.1-2.4 1.1-2.5 2.4-.2 2.3-.2 7.1-.2 7.1s0 4.8.2 7.1c.1 1.3 1.2 2.3 2.5 2.4 3.7.3 9 .3 9 .3s5.3 0 9-.3c1.3-.1 2.4-1.1 2.5-2.4.2-2.3.2-7.1.2-7.1s0-4.8-.2-7.1zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+                YouTube
+            </a>
         </div>
 
-        <p style="margin: 0 0 10px 0; color: var(--text-muted); text-align: left;">Download The Latest Version</p>
+        <h1>Kywy</h1>
         
-        <div class="container">
-            <a href="KywyAutoClicker.exe" class="btn" id="download-btn" download="KywyAutoClicker.exe">Download Release 1.0.0</a>
-            <div class="download-count">Downloads: <span id="count"><span class="spinner"></span></span></div>
-        </div>
+        <a href="KywyAutoClicker.exe" class="btn" id="download-btn">Download Release 1.0.0</a>
 
         <div class="description">
-            <strong>Kywy AutoClicker</strong> is an advanced, lightweight, and high-performance AutoClicker. It was specifically made to deliver maximum click consistency with minimum performance loss.
+            <strong>Kywy AutoClicker</strong> is an advanced, high-performance tool.
         </div>
 
-        <!-- App Preview Section -->
         <h2 class="section-title">App Preview</h2>
-        <div class="description" style="padding: 10px;">
-            <img src="Screenshot 2026-07-31 020814.png" alt="Kywy AutoClicker Preview" style="width: 100%; border-radius: 8px; display: block;">
+        <div class="description">
+            <img src="Screenshot 2026-07-31 020814.png" alt="Preview" style="width: 100%; border-radius: 8px;">
         </div>
 
         <div class="guide">
-            <h2>How to Download & Run Guide</h2>
+            <h2>How to Download</h2>
             <ol>
-                <li>Click the <strong class="guide-link" id="jump-to-download">"Download Release 1.0.0"</strong> button above to save the executable file to your computer</li>
-                <li>If your browser or Windows gives you a warning about an unrecognized file, don't worry, it's completely safe</li>
-                <li>If Windows SmartScreen blocks the app from running, click on <strong>"More info"</strong> in the popup window</li>
-                <li>Then click the <strong>"Run anyway"</strong> button</li>
-                <li>Open the application and enjoy using Kywy AutoClicker!</li>
-                <li>You can contact me for any questions in my discord server!</li>
+                <li>Click the <span class="guide-link" id="jump-to-download">"Download Release 1.0.0"</span> button above to save the file.</li>
             </ol>
-        </div>
-
-        <h2 class="section-title">Previous Versions</h2>
-        <div class="container" style="flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 10px;">
-            <a href="versions.html" class="btn btn-old">All Versions</a>
-        </div>
-
-        <div class="feedback-section">
-            <h2 style="color: var(--accent-color); font-size: 1.2rem; margin-bottom: 10px; text-align: left;">Help Us Improve!</h2>
-            <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-                <a href="mailto:kywyfeedbacks@gmail.com" class="btn" style="background-color: var(--btn-bg); color: var(--btn-text);">Send Feedback</a>
-                <span id="copy-email-hint" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer;" title="Click to copy email">Copy Email</span>
-            </div>
         </div>
     </div>
 
     <script>
-        // JS код остается без изменений, как в вашем оригинале
-        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-        window.scrollTo(0, 0);
-
-        const themeBtn = document.getElementById('theme-btn');
-        const htmlElement = document.documentElement;
-
-        const savedTheme = localStorage.getItem('kywy_theme');
-        if (savedTheme) { htmlElement.setAttribute('data-theme', savedTheme); updateThemeButton(savedTheme); }
-
-        themeBtn.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            if (newTheme === 'light') { htmlElement.setAttribute('data-theme', 'light'); localStorage.setItem('kywy_theme', 'light'); }
-            else { htmlElement.removeAttribute('data-theme'); localStorage.setItem('kywy_theme', 'dark'); }
-            updateThemeButton(newTheme);
-        });
-
-        function updateThemeButton(theme) { themeBtn.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'; }
-
         const jumpLink = document.getElementById('jump-to-download');
         const mainDownloadBtn = document.getElementById('download-btn');
         jumpLink.addEventListener('click', () => {
-            mainDownloadBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            mainDownloadBtn.classList.add('highlighted');
-            setTimeout(() => { mainDownloadBtn.classList.remove('highlighted'); }, 1200);
-        });
-
-        const namespace = 'kywyautoclicker';
-        const versions = ['downloads', 'v0_1_1', 'v0_1_0', 'alpha_0_0_4', 'alpha_0_0_3', 'alpha_0_0_2', 'alpha_0_0_1'];
-        const countElement = document.getElementById('count');
-        const totalCountElement = document.getElementById('total-count');
-
-        async function fetchAllCounts() {
-            let promises = versions.map(async (ver) => {
-                try { const res = await fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${ver}`); const d = await res.json(); return d.value || 0; }
-                catch { return 0; }
-            });
-            const counts = await Promise.all(promises);
-            countElement.textContent = counts[versions.indexOf('downloads')];
-            totalCountElement.textContent = counts.reduce((a, b) => a + b, 0);
-        }
-        fetchAllCounts();
-
-        mainDownloadBtn.addEventListener('click', () => {
-            fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/downloads`)
-                .then(() => fetchAllCounts())
-                .catch(() => {});
+            mainDownloadBtn.scrollIntoView({ behavior: 'smooth' });
+            mainDownloadBtn.style.boxShadow = '0 0 20px var(--accent-color)';
+            setTimeout(() => { mainDownloadBtn.style.boxShadow = 'none'; }, 1000);
         });
     </script>
 </body>
