@@ -48,7 +48,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-start; /* Все прижимается к левому краю */
             padding: 40px;
             margin: 0;
             min-height: 100vh;
@@ -68,35 +68,34 @@
 
         .wrapper {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px; /* Сделали шире, чтобы поместились обе колонки */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             animation: fadeIn 1.8s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-            margin: 0 auto;
+            /* Убрали margin: 0 auto; - теперь пустоты слева не будет */
         }
 
         /* Двухколоночный макет */
         .main-layout {
             display: flex;
-            gap: 40px;
+            gap: 60px; /* Отступ между текстом и картинкой */
             width: 100%;
             align-items: flex-start;
-            margin-top: 20px;
         }
 
-        /* Левая колонка теперь для картинки */
         .column-left {
-            flex: 1;
+            flex: 1.2;
+            max-width: 800px; /* Оригинальная ширина текста из первого дизайна */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             min-width: 0;
         }
 
-        /* Правая колонка теперь для текста и кнопок */
         .column-right {
             flex: 1;
+            max-width: 650px; /* Ограничиваем размер картинки, чтобы она не была гигантской */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -165,7 +164,7 @@
             flex-direction: column;
             align-items: flex-start;
             margin-top: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
         .header h1 { 
             font-size: 4rem; 
@@ -298,9 +297,14 @@
             100% { transform: rotate(360deg); }
         }
 
-        @media (max-width: 900px) {
+        /* Адаптивность для мобильных экранов - если экран маленький, картинка прыгнет вниз */
+        @media (max-width: 1050px) {
             .main-layout {
                 flex-direction: column;
+            }
+            .column-right {
+                max-width: 800px;
+                width: 100%;
             }
         }
     </style>
@@ -326,18 +330,9 @@
             <div class="total-downloads">Total All Versions Downloads: <span id="total-count"><span class="spinner"></span></span></div>
         </div>
 
-        <!-- Двухколоночный контейнер: Картинка слева, контент справа -->
         <div class="main-layout">
-            <!-- Левая колонка (App Preview) -->
+            <!-- Левая колонка (Контент, как было изначально) -->
             <div class="column-left">
-                <h2 class="section-title">App Preview</h2>
-                <div class="description" style="padding: 10px; margin-top: 0;">
-                    <img src="Screenshot 2026-07-31 020814.png" alt="Kywy AutoClicker Preview" style="width: 100%; border-radius: 8px; display: block;">
-                </div>
-            </div>
-
-            <!-- Правая колонка (Скачивание, описание, гайд) -->
-            <div class="column-right">
                 <p style="margin: 0 0 10px 0; color: var(--text-muted); text-align: left;">Download The Latest Version</p>
                 
                 <div class="container">
@@ -374,6 +369,14 @@
                         </a>
                         <span id="copy-email-hint" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer;" title="Click to copy email">Copy Email (kywyfeedbacks@gmail.com)</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка (App Preview) -->
+            <div class="column-right">
+                <h2 class="section-title">App Preview</h2>
+                <div class="description" style="padding: 10px; margin-top: 0;">
+                    <img src="Screenshot 2026-07-31 020814.png" alt="Kywy AutoClicker Preview" style="width: 100%; border-radius: 8px; display: block;">
                 </div>
             </div>
         </div>
