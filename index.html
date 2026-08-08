@@ -68,7 +68,7 @@
 
         .wrapper {
             width: 100%;
-            max-width: 1200px; /* Увеличили ширину для двух колонок */
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -82,8 +82,10 @@
             gap: 40px;
             width: 100%;
             align-items: flex-start;
+            margin-top: 20px;
         }
 
+        /* Левая колонка теперь для картинки */
         .column-left {
             flex: 1;
             display: flex;
@@ -92,6 +94,7 @@
             min-width: 0;
         }
 
+        /* Правая колонка теперь для текста и кнопок */
         .column-right {
             flex: 1;
             display: flex;
@@ -162,7 +165,7 @@
             flex-direction: column;
             align-items: flex-start;
             margin-top: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
         .header h1 { 
             font-size: 4rem; 
@@ -295,7 +298,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Адаптивность для мобильных экранов */
         @media (max-width: 900px) {
             .main-layout {
                 flex-direction: column;
@@ -324,10 +326,18 @@
             <div class="total-downloads">Total All Versions Downloads: <span id="total-count"><span class="spinner"></span></span></div>
         </div>
 
-        <!-- Двухколоночный контейнер -->
+        <!-- Двухколоночный контейнер: Картинка слева, контент справа -->
         <div class="main-layout">
-            <!-- Левая колонка -->
+            <!-- Левая колонка (App Preview) -->
             <div class="column-left">
+                <h2 class="section-title">App Preview</h2>
+                <div class="description" style="padding: 10px; margin-top: 0;">
+                    <img src="Screenshot 2026-07-31 020814.png" alt="Kywy AutoClicker Preview" style="width: 100%; border-radius: 8px; display: block;">
+                </div>
+            </div>
+
+            <!-- Правая колонка (Скачивание, описание, гайд) -->
+            <div class="column-right">
                 <p style="margin: 0 0 10px 0; color: var(--text-muted); text-align: left;">Download The Latest Version</p>
                 
                 <div class="container">
@@ -364,14 +374,6 @@
                         </a>
                         <span id="copy-email-hint" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer;" title="Click to copy email">Copy Email (kywyfeedbacks@gmail.com)</span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Правая колонка (App Preview) -->
-            <div class="column-right">
-                <h2 class="section-title">App Preview</h2>
-                <div class="description" style="padding: 10px; margin-top: 0;">
-                    <img src="Screenshot 2026-07-31 020814.png" alt="Kywy AutoClicker Preview" style="width: 100%; border-radius: 8px; display: block;">
                 </div>
             </div>
         </div>
