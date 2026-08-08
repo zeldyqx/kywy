@@ -55,7 +55,6 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Максимально плавная, невесомая и долгая анимация появления */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -76,7 +75,6 @@
             animation: fadeIn 1.8s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
         }
 
-        /* Верхняя панель с кнопками соцсетей и темы справа */
         .top-bar-fixed {
             position: absolute;
             top: 0;
@@ -205,7 +203,6 @@
         }
         .guide strong { color: var(--text-color); }
 
-        /* Интерактивная ссылка в гайде */
         .guide-link {
             color: var(--accent-color);
             text-decoration: underline;
@@ -233,7 +230,6 @@
         }
         .btn:hover { background-color: var(--accent-hover); transform: scale(1.05); }
 
-        /* Эффект подсветки кнопки только при клике из гайда */
         .btn.highlighted {
             box-shadow: 0 0 25px var(--accent-color);
             transform: scale(1.08);
@@ -259,7 +255,6 @@
         .section-title { margin-top: 40px; color: var(--text-muted); font-size: 1.1rem; width: 100%; text-align: left; }
         .feedback-section { margin-top: 50px; text-align: left; width: 100%; }
 
-        /* Стиль крутящегося лоадера */
         .spinner {
             width: 12px;
             height: 12px;
@@ -308,7 +303,6 @@
             <strong>Kywy AutoClicker</strong> is an advanced, lightweight, and high-performance AutoClicker. It was specifically made to deliver maximum click consistency with minimum performance loss.
         </div>
 
-        <!-- Подробный гайд как скачать и запустить -->
         <div class="guide">
             <h2>How to Download & Run Guide</h2>
             <ol>
@@ -338,7 +332,6 @@
     </div>
 
     <script>
-        // Предотвращаем сохранение позиции скролла браузером и всегда кидаем наверх
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
@@ -375,7 +368,6 @@
             }
         }
 
-        // Логика прокрутки и подсветки кнопки ТОЛЬКО ПРИ КЛИКЕ на фразу в гайде
         const jumpLink = document.getElementById('jump-to-download');
         const mainDownloadBtn = document.getElementById('download-btn');
 
@@ -388,7 +380,6 @@
             }, 1200);
         });
 
-        // Копирование почты по клику для удобства
         document.getElementById('copy-email-hint').addEventListener('click', () => {
             navigator.clipboard.writeText('kywyautoclicker@gmail.com');
             const hint = document.getElementById('copy-email-hint');
@@ -401,6 +392,7 @@
             }, 2000);
         });
 
+        // Настройки счетчика через Abacus API
         const namespace = 'kywy_autoclicker';
         const versions = ['downloads', 'v0_1_1', 'v0_1_0', 'alpha_0_0_4', 'alpha_0_0_3', 'alpha_0_0_2', 'alpha_0_0_1'];
         const countElement = document.getElementById('count');
@@ -410,9 +402,9 @@
             let total = 0;
             let promises = versions.map(async (ver) => {
                 try {
-                    const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${ver}/`);
+                    const response = await fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${ver}`);
                     const data = await response.json();
-                    return data.count || 0;
+                    return data.value || 0;
                 } catch {
                     return 0;
                 }
@@ -430,10 +422,10 @@
         fetchAllCounts();
 
         mainDownloadBtn.addEventListener('click', () => {
-            fetch(`https://api.counterapi.dev/v1/${namespace}/downloads/up`)
+            fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/downloads`)
                 .then(response => response.json())
                 .then(data => {
-                    countElement.textContent = data.count;
+                    countElement.textContent = data.value || 0;
                     fetchAllCounts();
                 })
                 .catch(() => {});
