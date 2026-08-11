@@ -409,7 +409,7 @@
         </div>
     </div>
 
-<script>
+    <script>
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
@@ -453,8 +453,6 @@
             const versionKey = btn.getAttribute('data-version');
             const countSpan = document.getElementById(`count-${versionKey}`);
 
-            if (!countSpan) return;
-
             countSpan.innerHTML = '<span class="spinner"></span>';
 
             fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}`)
@@ -478,3 +476,6 @@
             });
         });
     </script>
+
+</body>
+</html>
