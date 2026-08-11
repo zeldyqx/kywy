@@ -446,7 +446,7 @@
             }
         }
 
-        const namespace = 'kywyautoclicker';
+        const workspace = 'kywyautoclicker';
         const downloadButtons = document.querySelectorAll('.download-btn');
 
         downloadButtons.forEach(btn => {
@@ -455,21 +455,21 @@
 
             countSpan.innerHTML = '<span class="spinner"></span>';
 
-            fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${versionKey}`)
+            fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}`)
                 .then(response => response.json())
                 .then(data => {
-                    countSpan.textContent = data.value !== undefined ? data.value : 0;
+                    countSpan.textContent = data.count !== undefined ? data.count : 0;
                 })
                 .catch(() => {
                     countSpan.textContent = '0';
                 });
 
             btn.addEventListener('click', () => {
-                fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${versionKey}`)
+                fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}/up`)
                     .then(response => response.json())
                     .then(data => {
-                        if (data.value !== undefined) {
-                            countSpan.textContent = data.value;
+                        if (data.count !== undefined) {
+                            countSpan.textContent = data.count;
                         }
                     })
                     .catch(() => {});
