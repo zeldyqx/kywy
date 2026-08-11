@@ -409,42 +409,8 @@
         </div>
     </div>
 
-    <script>
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
-
-        const themeBtn = document.getElementById('theme-btn');
-        const htmlElement = document.documentElement;
-
-        const savedTheme = localStorage.getItem('kywy_theme');
-        if (savedTheme) {
-            htmlElement.setAttribute('data-theme', savedTheme);
-            updateThemeButton(savedTheme);
-        }
-
-        themeBtn.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            if (newTheme === 'light') {
-                htmlElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('kywy_theme', 'light');
-            } else {
-                htmlElement.removeAttribute('data-theme');
-                localStorage.setItem('kywy_theme', 'dark');
-            }
-            updateThemeButton(newTheme);
-        });
-
-        function updateThemeButton(theme) {
-            if (theme === 'light') {
-                themeBtn.textContent = '🌙 Dark Mode';
-            } else {
-                themeBtn.textContent = '☀️ Light Mode';
-            }
-        }
+<script>
+        // ... (оставь код до блока с downloadButtons без изменений)
 
         const workspace = 'kywyautoclicker';
         const downloadButtons = document.querySelectorAll('.download-btn');
@@ -455,7 +421,8 @@
 
             countSpan.innerHTML = '<span class="spinner"></span>';
 
-            fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}`)
+            // Используем эндпоинт Abacus
+            fetch(`https://abacus.bar/api/get?project=${workspace}&id=${versionKey}`)
                 .then(response => response.json())
                 .then(data => {
                     countSpan.textContent = data.count !== undefined ? data.count : 0;
@@ -465,7 +432,8 @@
                 });
 
             btn.addEventListener('click', () => {
-                fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}/up`)
+                // Инкремент через Abacus
+                fetch(`https://abacus.bar/api/add?project=${workspace}&id=${versionKey}`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.count !== undefined) {
@@ -476,6 +444,6 @@
             });
         });
     </script>
-
+    
 </body>
 </html>
