@@ -269,8 +269,10 @@
         </div>
     </div>
 
-    <script>
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+<script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
         window.scrollTo(0, 0);
 
         const themeBtn = document.getElementById('theme-btn');
@@ -285,6 +287,7 @@
         themeBtn.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
             if (newTheme === 'light') {
                 htmlElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('kywy_theme', 'light');
@@ -296,34 +299,42 @@
         });
 
         function updateThemeButton(theme) {
-            themeBtn.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+            if (theme === 'light') {
+                themeBtn.textContent = '🌙 Dark Mode';
+            } else {
+                themeBtn.textContent = '☀️ Light Mode';
+            }
         }
 
-        const NAMESPACE = 'kywyautoclicker';
+        const workspace = 'kywyautoclicker';
         const downloadButtons = document.querySelectorAll('.download-btn');
 
         downloadButtons.forEach(btn => {
             const versionKey = btn.getAttribute('data-version');
             const countSpan = document.getElementById(`count-${versionKey}`);
-            
+
+            if (!countSpan) return;
+
             countSpan.innerHTML = '<span class="spinner"></span>';
 
-            fetch(`https://api.counterapi.dev/v2/${NAMESPACE}/${versionKey}`)
-                .then(res => res.json())
+            fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}`)
+                .then(response => response.json())
                 .then(data => {
                     countSpan.textContent = data.count !== undefined ? data.count : 0;
                 })
-                .catch(() => { countSpan.textContent = '0'; });
+                .catch(() => {
+                    countSpan.textContent = '0';
+                });
 
             btn.addEventListener('click', () => {
-                fetch(`https://api.counterapi.dev/v2/${NAMESPACE}/${versionKey}/up`)
-                    .then(res => res.json())
+                fetch(`https://api.counterapi.dev/v2/${workspace}/${versionKey}/up`)
+                    .then(response => response.json())
                     .then(data => {
-                        if (data.count !== undefined) countSpan.textContent = data.count;
+                        if (data.count !== undefined) {
+                            countSpan.textContent = data.count;
+                        }
                     })
                     .catch(() => {});
             });
         });
     </script>
-</body>
-</html>
