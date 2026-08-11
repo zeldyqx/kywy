@@ -409,10 +409,44 @@
         </div>
     </div>
 
-<script>
-        // ... (оставь код до блока с downloadButtons без изменений)
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
 
-        const workspace = 'kywyautoclicker';
+        const themeBtn = document.getElementById('theme-btn');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('kywy_theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            if (newTheme === 'light') {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('kywy_theme', 'light');
+            } else {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('kywy_theme', 'dark');
+            }
+            updateThemeButton(newTheme);
+        });
+
+        function updateThemeButton(theme) {
+            if (theme === 'light') {
+                themeBtn.textContent = '🌙 Dark Mode';
+            } else {
+                themeBtn.textContent = '☀️ Light Mode';
+            }
+        }
+
+        const namespace = 'kywyautoclicker';
         const downloadButtons = document.querySelectorAll('.download-btn');
 
         downloadButtons.forEach(btn => {
@@ -421,29 +455,27 @@
 
             countSpan.innerHTML = '<span class="spinner"></span>';
 
-            // Используем эндпоинт Abacus
-            fetch(`https://abacus.bar/api/get?project=${workspace}&id=${versionKey}`)
+            fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${versionKey}`)
                 .then(response => response.json())
                 .then(data => {
-                    countSpan.textContent = data.count !== undefined ? data.count : 0;
+                    countSpan.textContent = data.value !== undefined ? data.value : 0;
                 })
                 .catch(() => {
                     countSpan.textContent = '0';
                 });
 
             btn.addEventListener('click', () => {
-                // Инкремент через Abacus
-                fetch(`https://abacus.bar/api/add?project=${workspace}&id=${versionKey}`)
+                fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${versionKey}`)
                     .then(response => response.json())
                     .then(data => {
-                        if (data.count !== undefined) {
-                            countSpan.textContent = data.count;
+                        if (data.value !== undefined) {
+                            countSpan.textContent = data.value;
                         }
                     })
                     .catch(() => {});
             });
         });
     </script>
-    
+
 </body>
 </html>
